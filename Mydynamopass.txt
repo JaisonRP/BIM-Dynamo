@@ -1,1 +1,21 @@
-pass0012256
+point1 = Autodesk.BoundingBox.MaxPoint(t9);
+pts = point1;
+t1 = pts.Z;
+x = t1;
+t6 = x + 50;
+point2 = Autodesk.BoundingBox.MinPoint(t9);
+pts1 = point2;
+t2 = pts1.Z;
+x1 = t2;
+t7 = x1 - 30;
+pts2 = point2;
+t4 = pts2.X;
+pts3 = point2;
+t3 = pts3.Y;
+point3 = Autodesk.Point.ByCoordinates(t4, t3, -30);
+pts4 = point1;
+t8 = pts4.X;
+pts5 = point1;
+t5 = pts5.Y;
+point4 = Autodesk.Point.ByCoordinates(t8, t5, 50);
+boundingBox1 = Autodesk.BoundingBox.ByCorners(point3, point4);
