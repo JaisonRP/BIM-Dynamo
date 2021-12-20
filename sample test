@@ -1,0 +1,20 @@
+import clr
+clr.AddReference('RevitAPI')
+import Autodesk
+from Autodesk.Revit.DB import XYZ
+clr.AddReference('RevitNodes')
+import Revit
+clr.ImportExtensions(Revit.GeometryConversion)
+
+annotations=UnwrapElement(IN[0]) if isinstance(IN[0],list) else [UnwrapElement(IN[0])]
+bbox,center = [],[]
+
+for anno in annotations:
+    viewId = anno.OwnerViewId
+    view = anno.Document.GetElement(viewId)
+    box=anno.BoundingBox[view]
+    bbox.append(box.ToProtoType())
+    center.append(((box.Min+box.Max)/2).ToPoint())
+
+if isinstance(IN[0], list): OUT = bbox,center
+else: OUT = bbox[0],center[0]
